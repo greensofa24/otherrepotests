@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Idle Fly Swat</title>
+</head>
+<body>
+
+<h2>$0</h2>
+
+<script>
+var money = 0;
+setInterval(function(){document.querySelector("h2").innerText = "$" + money}, 10);
+
+function createFly(src, width, text) {
+let fly = document.createElement("img");
+let p = document.createElement("p");
+p.innerText = text || "Flies";
+let hr = document.createElement("hr");
+let hrstyle = document.createElement("hr");
+let br = document.createElement("br");
+let br2 = document.createElement("br");
+let br3 = document.createElement("br");
+let br4 = document.createElement("br");
+let br5 = document.createElement("br");
+fly.src = src || "https://greensofa24.github.io/idleflyswat/fly.png";
+fly.width = width || 50;
+fly.style.position = "relative";
+fly.style.top = Math.floor(Math.random() * 70 + 102) + "px";
+fly.style.left = window.innerWidth - 70 + "px";
+fly.style.rotate = "250deg";
+fly.onclick = function(){document.body.removeChild(fly); document.body.removeChild(p); document.body.removeChild(hr); document.body.removeChild(br); document.body.removeChild(br2); document.body.removeChild(br3); document.body.removeChild(br4); document.body.removeChild(br5); document.body.removeChild(hrstyle); createFly(fly.src, fly.width); money += 1; clearInterval(sfly)};
+let sfly = setInterval(function(){fly.style.left = parseInt(fly.style.left) - 1 + "px"}, 5);
+setInterval(function(){if(fly.style.left <= "-60px"){document.body.removeChild(fly); document.body.removeChild(p); document.body.removeChild(hr); document.body.removeChild(br); document.body.removeChild(br2); document.body.removeChild(br3); document.body.removeChild(br4); document.body.removeChild(br5); document.body.removeChild(hrstyle); createFly(fly.src, fly.width, p.innerText); clearInterval(sfly)}}, 10);
+document.body.appendChild(fly);
+document.body.appendChild(p);
+document.body.appendChild(hr);
+document.body.appendChild(br);
+document.body.appendChild(br2);
+document.body.appendChild(br3);
+document.body.appendChild(br4);
+document.body.appendChild(br5);
+document.body.appendChild(hrstyle);
+}
+
+createFly();
+</script>
+</body>
+</html>
